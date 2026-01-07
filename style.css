@@ -1,0 +1,232 @@
+/* 공통 */
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* 로그인/회원가입 페이지 */
+body.login-page,
+body.register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f5f5f5;
+}
+
+input {
+  display: block;
+  margin: 10px 0;
+  padding: 8px 12px;
+  width: 250px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 5px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #1976d2;
+  color: white;
+}
+
+button:hover {
+  background: #115293;
+}
+
+button.secondary {
+  background: #fff;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+}
+
+button.secondary:hover {
+  background: #1976d2;
+  color: #fff;
+}
+
+/* ===============================
+   대시보드 영역
+=================================*/
+
+/* 달력 영역 */
+#calendar-container {
+  max-width: 900px; /* 화면 전체 사용 */
+  margin: 0 auto 20px auto;
+  position: relative;
+}
+
+/* 로그아웃 버튼 */
+#logoutBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+  z-index: 20;
+}
+
+#logoutBtn:hover {
+  background: #115293;
+}
+
+/* FullCalendar */
+.fc .fc-toolbar button {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.fc-event {
+  font-size: 0.9rem;
+  white-space: normal;
+}
+
+#calendar {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.selected-date {
+  background-color: #ffeb3b !important;
+  border-radius: 4px;
+}
+
+.fc-event.completed {
+  background-color: #999 !important;
+  text-decoration: line-through;
+  color: #fff !important;
+}
+
+.fc .fc-toolbar-title {
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+/* ===============================
+   할 일 입력 영역
+=================================*/
+#add-section {
+  max-width: 900px; /* 입력 영역만 제한 */
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#todo-title {
+  flex: 1 1 250px;
+  max-width: 400px;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+#todo-time {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+#addBtn {
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background: #1976d2;
+  color: white;
+}
+
+#addBtn:hover {
+  background: #115293;
+}
+
+/* ===============================
+   할 일 리스트
+=================================*/
+#todo-list {
+  max-width: 900px; /* 리스트 영역만 제한 */
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+li.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* 체크박스 + 텍스트 */
+.todo-left {
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+}
+
+li span {
+  margin-left: 8px;
+}
+
+/* 수정/삭제 버튼 */
+.todo-buttons button {
+  margin-left: 5px;
+  padding: 2px 6px;
+  font-size: 0.85rem;
+  border: 1px solid #1976d2;
+  background: #fff;
+  color: #1976d2;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-buttons button:hover {
+  background: #1976d2;
+  color: #fff;
+}
+
+/* ===============================
+   반응형
+=================================*/
+@media (max-width: 600px) {
+  #todo-title {
+    width: 70%;
+  }
+  #todo-time {
+    width: 80px;
+  }
+  .todo-buttons button {
+    font-size: 0.75rem;
+    padding: 2px 4px;
+  }
+}

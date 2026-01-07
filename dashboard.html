@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>대시보드</title>
+
+    <!-- FullCalendar CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- 내 CSS -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1 class="page-title">대시보드</h1>
+
+    <div id="calendar-container">
+      <button id="logoutBtn">로그아웃</button>
+      <div id="calendar"></div>
+    </div>
+
+    <h2 class="section-title">할 일 추가</h2>
+
+    <div id="add-section">
+      <input id="todo-title" placeholder="할 일 입력" />
+      <input id="todo-time" type="time" value="09:00" />
+      <button id="addBtn">추가</button>
+    </div>
+
+    <ul id="todo-list"></ul>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="/dashboard.js"></script>
+  </body>
+</html>

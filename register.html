@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="register-page">
+    <h1>회원가입</h1>
+
+    <form id="registerForm">
+      <input
+        id="username"
+        placeholder="아이디"
+        autocomplete="username"
+        required
+      />
+      <input
+        id="password"
+        type="password"
+        placeholder="비밀번호"
+        autocomplete="new-password"
+        required
+      />
+      <button type="submit" id="registerBtn">회원가입</button>
+      <button onclick="window.location.href='index.html'">로그인</button>
+    </form>
+
+    <p id="error-msg"></p>
+
+    <script>
+      const form = document.getElementById("registerForm");
+      const registerBtn = document.getElementById("registerBtn");
+      const errorMsg = document.getElementById("error-msg");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        errorMsg.textContent = "";
+        registerBtn.disabled = true;
+
+        const username = form.username.value.trim();
+        const password = form.password.value;
+
+        if (!username || !password) {
+          errorMsg.textContent = "아이디와 비밀번호를 입력하세요.";
+          registerBtn.disabled = false;
+          return;
+        }
+
+        if (password.length < 6) {
+          errorMsg.textContent = "비밀번호는 최소 6자리 이상이어야 합니다.";
+          registerBtn.disabled = false;
+          return;
+        }
+
+        try {
+          const res = await fetch("/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+
+          const data = await res.json();
+          if (data.success) {
+            alert("회원가입 성공! 로그인 페이지로 이동합니다.");
+            window.location.href = "/index.html";
+          } else {
+            errorMsg.textContent = data.message || "회원가입 실패";
+          }
+        } catch (err) {
+          errorMsg.textContent = "서버 오류 발생";
+        }
+
+        registerBtn.disabled = false;
+      });
+    </script>
+  </body>
+</html>
